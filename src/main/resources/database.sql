@@ -107,3 +107,14 @@ CREATE TABLE carts_books
     CONSTRAINT fk_carts_books_book_id FOREIGN KEY (book_id) REFERENCES books (id)
 );
 
+
+-- 🛒 + 💸 Cart + Discounts: a join table for cart-discounts relation for offered discounts
+
+CREATE TABLE offered_discounts
+(
+    cart_id     int NOT NULL,
+    CONSTRAINT fk_offered_discounts_cart_id FOREIGN KEY (cart_id) REFERENCES carts (id),
+    discount_id int NOT NULL,
+    CONSTRAINT fk_offered_discounts_discount_id FOREIGN KEY (discount_id) REFERENCES discounts (id)
+);
+
