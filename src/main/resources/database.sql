@@ -69,7 +69,7 @@ CREATE TABLE purchases_books
 );
 
 
--- 🛒 Create a Loyalty Points Discounts table
+-- 🪙 Create a Loyalty Points Discounts table
 
 CREATE TABLE discounts
 (
@@ -87,3 +87,11 @@ VALUES ('REG', 10, 100),
        ('OLD', 10, 100);
 
 
+-- 🛒 Cart table
+
+CREATE TABLE carts
+(
+    id      SERIAL PRIMARY KEY,
+    user_id int NOT NULL,
+    CONSTRAINT fk_carts_user_id FOREIGN KEY (user_id) REFERENCES users (id)
+);
