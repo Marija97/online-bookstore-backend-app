@@ -34,3 +34,18 @@ VALUES ('Crime and Punishment', 'OLD', 7.89, 34),
        ('The Hobbit', 'NEW', 14.99, 102),
        ('Fahrenheit 451', 'REG', 10.20, 49);
 
+
+--💸 Create a purchases table
+
+CREATE TABLE purchases
+(
+    id      SERIAL PRIMARY KEY,
+    user_id int   NOT NULL,
+    CONSTRAINT fk_purchases_user
+        FOREIGN KEY (user_id)
+            REFERENCES users (id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+    profit  float NOT NULL
+);
+
