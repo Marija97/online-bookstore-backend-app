@@ -49,3 +49,22 @@ CREATE TABLE purchases
     profit  float NOT NULL
 );
 
+-- 💸 + 📚 Create a join table for purchase-books relation
+
+CREATE TABLE purchases_books
+(
+    purchase_id int NOT NULL,
+    book_id     int NOT NULL,
+    CONSTRAINT fk_purchase_books_purchase_id
+        FOREIGN KEY (purchase_id)
+            REFERENCES purchases (id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+    CONSTRAINT fk_purchase_books_book_id
+        FOREIGN KEY (book_id)
+            REFERENCES books (id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
+);
+
+
