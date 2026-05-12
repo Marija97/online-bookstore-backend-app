@@ -95,3 +95,15 @@ CREATE TABLE carts
     user_id int NOT NULL,
     CONSTRAINT fk_carts_user_id FOREIGN KEY (user_id) REFERENCES users (id)
 );
+
+
+-- 🛒 + 📚 Cart + Books: a join table for cart-books relation (a cart contains 1 or more books)
+
+CREATE TABLE carts_books
+(
+    cart_id int NOT NULL,
+    CONSTRAINT fk_carts_books_cart_id FOREIGN KEY (cart_id) REFERENCES carts (id),
+    book_id int NOT NULL,
+    CONSTRAINT fk_carts_books_book_id FOREIGN KEY (book_id) REFERENCES books (id)
+);
+
