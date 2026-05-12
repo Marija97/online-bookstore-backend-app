@@ -1,0 +1,27 @@
+services:
+  database:
+    image: 'postgres:15.2'
+    ports:
+      - '15432:5432'
+    environment:
+      - 'POSTGRES_USER=masha'
+      - 'POSTGRES_DB=online_bookstore_database'
+      - 'POSTGRES_PASSWORD=secret'
+    volumes:
+      - local_pgdata:/c/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: masha@mashasoftware.com
+      PGADMIN_DEFAULT_PASSWORD: masha12345
+    volumes:
+      - pgadmin-data:/c/pgadmin
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
