@@ -49,6 +49,7 @@ CREATE TABLE purchases
     profit  float NOT NULL
 );
 
+
 -- 💸 + 📚 Create a join table for purchase-books relation
 
 CREATE TABLE purchases_books
@@ -66,5 +67,23 @@ CREATE TABLE purchases_books
             ON DELETE CASCADE
             ON UPDATE CASCADE
 );
+
+
+-- 🛒 Create a Loyalty Points Discounts table
+
+CREATE TABLE discounts
+(
+    id                  SERIAL PRIMARY KEY,
+    book_type           varchar(3) NOT NULL
+        CONSTRAINT check_book_type CHECK (book_type IN ('OLD', 'REG', 'NEW')),
+    loyalty_points_cost int        NOT NULL
+        CONSTRAINT loyalty_points_cost_range CHECK (loyalty_points_cost > 0),
+    discount_percent    int        NOT NULL
+        CONSTRAINT check_discount_percent_range CHECK (discount_percent > 0 AND discount_percent <= 100)
+);
+
+INSERT INTO discounts(book_type, loyalty_points_cost, discount_percent)
+VALUES ('REG', 10, 100),
+       ('OLD', 10, 100);
 
 
