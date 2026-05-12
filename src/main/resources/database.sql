@@ -1,4 +1,4 @@
--- 👤 Create a users table
+-- 👤 Users table
 
 CREATE TABLE users
 (
@@ -8,7 +8,7 @@ CREATE TABLE users
 );
 
 
--- 📚 Create a books table with some inventory
+-- 📚 Books table with some inventory
 
 CREATE TABLE books
 (
@@ -35,7 +35,7 @@ VALUES ('Crime and Punishment', 'OLD', 7.89, 34),
        ('Fahrenheit 451', 'REG', 10.20, 49);
 
 
---💸 Create a purchases table
+-- 💰 Purchase table
 
 CREATE TABLE purchases
 (
@@ -50,7 +50,7 @@ CREATE TABLE purchases
 );
 
 
--- 💸 + 📚 Create a join table for purchase-books relation
+-- 💰 + 📚 Purchases + Books: a join table for purchase-books relation (each purchase contains 1 or more books)
 
 CREATE TABLE purchases_books
 (
@@ -69,7 +69,7 @@ CREATE TABLE purchases_books
 );
 
 
--- 🪙 Create a Loyalty Points Discounts table
+-- 🪙💸 Loyalty Points Discounts table
 
 CREATE TABLE discounts
 (
