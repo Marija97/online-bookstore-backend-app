@@ -45,32 +45,16 @@ public class Book {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public BookType getType() {
         return type;
-    }
-
-    public void setType(BookType type) {
-        this.type = type;
     }
 
     public BigDecimal getBasePrice() {
         return basePrice;
     }
 
-    public void setBasePrice(BigDecimal basePrice) {
-        this.basePrice = basePrice;
-    }
-
     public Integer getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public List<Purchase> getPurchases() {
