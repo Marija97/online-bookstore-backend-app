@@ -1,11 +1,11 @@
 package com.mashasoftware.onlinebookstore.purchase.dto;
 
 import com.mashasoftware.onlinebookstore.book.entity.Book;
-import com.mashasoftware.onlinebookstore.purchase.entity.Discount;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-public record CartResponseDto(Integer id, List<Book> books, List<Discount> offeredDiscounts,
-                              List<Discount> appliedDiscounts) {
+public record CartResponseDto(Integer id, List<Book> books, List<DiscountResponseDto> offeredDiscounts,
+                              List<DiscountResponseDto> appliedDiscounts, BigDecimal totalPrice) {
 
 }

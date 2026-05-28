@@ -4,8 +4,10 @@ import com.mashasoftware.onlinebookstore.book.entity.Book;
 import com.mashasoftware.onlinebookstore.user.entity.User;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "carts")
@@ -34,12 +36,19 @@ public class Cart {
     public Cart() {
     }
 
-    public void addABook(Book book) {
+    public Integer addABook(Book book) {
         books.add(book);
+
+        // Todo check loyalty points!
+        var discountId = Discount.getDiscountIdForBook(book.getType());
+        if (offeredDiscounts.stream().noneMatch((discount -> Objects.equals(discount.getId(), discountId)))) {
+            return discountId;
+        }
+        return null;
     }
 
-    private void addDiscount(Discount discount) {
-
+    public void offerADiscount(Discount discount) {
+        this.offeredDiscounts.add(discount);
     }
 
     public User getUser() {
