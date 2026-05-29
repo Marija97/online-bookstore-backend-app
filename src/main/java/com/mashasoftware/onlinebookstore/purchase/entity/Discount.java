@@ -47,7 +47,7 @@ public class Discount {
         return null;
     }
 
-    public DiscountResponseDto mapToDiscountResponseDto () {
+    public DiscountResponseDto mapToDiscountResponseDto() {
         return new DiscountResponseDto(this.getId(), this.getLoyaltyPointsCost(), this.getDiscountPercent());
     }
 }

@@ -27,11 +27,11 @@ public class Cart {
 
     @ManyToMany
     @JoinTable(name = "offered_discounts", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "discount_id"))
-    private List<Discount> offeredDiscounts;
+    private List<Discount> offeredDiscounts = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "applied_discounts", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "discount_id"))
-    private List<Discount> appliedDiscounts;
+    private List<Discount> appliedDiscounts = new ArrayList<>();
 
     public Cart() {
     }

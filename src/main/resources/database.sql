@@ -115,9 +115,18 @@ CREATE TABLE offered_discounts
     cart_id     int NOT NULL,
     CONSTRAINT fk_offered_discounts_cart_id FOREIGN KEY (cart_id) REFERENCES carts (id),
     discount_id int NOT NULL,
-    CONSTRAINT fk_offered_discounts_discount_id FOREIGN KEY (discount_id) REFERENCES discounts (id)
+    CONSTRAINT fk_offered_discounts_discount_id FOREIGN KEY (discount_id) REFERENCES discounts (id),
+--     book_id int NOT NULL,
+--     CONSTRAINT fk_offered_discounts_book_id FOREIGN KEY (book_id) REFERENCES books (id)
 );
+-- update with new column for book_id
+DELETE FROM offered_discounts;
 
+ALTER TABLE offered_discounts
+    ADD book_id int NOT NULL,
+    ADD CONSTRAINT fk_offered_discounts_book_id FOREIGN KEY (book_id) REFERENCES books (id);
+
+ALTER TABLE offered_discounts DROP COLUMN book_id;
 
 -- 🛒 + 💸 Cart + Discounts: a join table for cart-discounts relation for applied discounts
 
@@ -126,5 +135,8 @@ CREATE TABLE applied_discounts
     cart_id     int NOT NULL,
     CONSTRAINT fk_applied_discounts_cart_id FOREIGN KEY (cart_id) REFERENCES carts (id),
     discount_id int NOT NULL,
-    CONSTRAINT fk_applied_discounts_discount_id FOREIGN KEY (discount_id) REFERENCES discounts (id)
+    CONSTRAINT fk_applied_discounts_discount_id FOREIGN KEY (discount_id) REFERENCES discounts (id),
+--     book_id int NOT NULL,
+--     CONSTRAINT fk_offered_discounts_book_id FOREIGN KEY (book_id) REFERENCES books (id)
 );
+
