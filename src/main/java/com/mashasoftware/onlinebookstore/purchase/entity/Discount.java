@@ -4,6 +4,8 @@ import com.mashasoftware.onlinebookstore.book.entity.BookType;
 import com.mashasoftware.onlinebookstore.purchase.dto.DiscountResponseDto;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 
 @Entity
 @Table(name = "discounts")
@@ -31,6 +33,14 @@ public class Discount {
 
     public Integer getId() {
         return this.id;
+    }
+
+    public BookType getBookType() {
+        return this.bookType;
+    }
+
+    BigDecimal apply(BigDecimal fullPrice) {
+        return fullPrice.multiply(BigDecimal.valueOf(discountPercent / 100));
     }
 
     public Integer getLoyaltyPointsCost() {

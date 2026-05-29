@@ -63,6 +63,24 @@ public class Cart {
         return this.id;
     }
 
+    public BigDecimal getTotalPrice() {
+        var totalPrice = BigDecimal.ZERO;
+        for (Book book : books) {
+            totalPrice = totalPrice.add(book.getBasePrice());
+        }
+        for (Discount discount : appliedDiscounts) {
+            var bookToGetDiscount = books.stream()
+                    .filter((book) -> book.getType() == discount.getBookType())
+                    .findFirst()
+                    .orElse(null);
+            if (bookToGetDiscount == null) continue;
+
+            var discountCost = discount.apply(bookToGetDiscount.getBasePrice());
+            totalPrice = totalPrice.subtract(discountCost);
+        }
+        return totalPrice;
+    }
+
     public List<Book> getBooks() {
         return this.books;
     }

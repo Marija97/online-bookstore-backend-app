@@ -60,5 +60,6 @@ public class CartServiceImpl implements CartService {
                 cart.getBooks().stream().map((Book::mapToBookResponseDto)).toList(),
                 cart.getOfferedDiscounts().stream().map((Discount::mapToDiscountResponseDto)).toList(),
                 cart.getAppliedDiscounts().stream().map((Discount::mapToDiscountResponseDto)).toList(),
+                cart.getTotalPrice());
     }
 }
