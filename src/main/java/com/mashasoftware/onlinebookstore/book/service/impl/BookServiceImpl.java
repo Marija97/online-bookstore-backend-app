@@ -20,10 +20,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookResponseDto> getBooks() {
-        return bookRepository.findAll().stream().map(this::createResponse).toList();
-    }
-
-    private BookResponseDto createResponse(Book book) {
-        return new BookResponseDto(book.getId(), book.getTitle(), book.getType(), book.getBasePrice());
+        // todo filter by quantity > 0 ...
+        return bookRepository.findAll().stream().map(Book::mapToBookResponseDto).toList();
     }
 }

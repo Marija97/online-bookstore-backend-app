@@ -1,5 +1,6 @@
 package com.mashasoftware.onlinebookstore.book.entity;
 
+import com.mashasoftware.onlinebookstore.book.dto.BookResponseDto;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -48,4 +49,7 @@ public class Book {
         return quantity;
     }
 
+    public static BookResponseDto mapToBookResponseDto(Book book) {
+        return new BookResponseDto(book.getId(), book.getTitle(), book.getType(), book.getBasePrice());
+    }
 }

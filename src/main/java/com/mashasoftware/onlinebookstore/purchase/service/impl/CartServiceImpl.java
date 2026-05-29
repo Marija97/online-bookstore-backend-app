@@ -1,5 +1,6 @@
 package com.mashasoftware.onlinebookstore.purchase.service.impl;
 
+import com.mashasoftware.onlinebookstore.book.entity.Book;
 import com.mashasoftware.onlinebookstore.book.repository.BookRepository;
 import com.mashasoftware.onlinebookstore.purchase.dto.CartResponseDto;
 import com.mashasoftware.onlinebookstore.purchase.entity.Cart;
@@ -54,10 +55,9 @@ public class CartServiceImpl implements CartService {
     }
 
     private CartResponseDto createResponse(Cart cart) {
-        return new CartResponseDto(cart.getId(), cart.getBooks(), cart.getOfferedDiscounts(), cart.getAppliedDiscounts());
         return new CartResponseDto(
                 cart.getId(),
-                cart.getBooks(),
+                cart.getBooks().stream().map((Book::mapToBookResponseDto)).toList(),
                 cart.getOfferedDiscounts().stream().map((Discount::mapToDiscountResponseDto)).toList(),
                 cart.getAppliedDiscounts().stream().map((Discount::mapToDiscountResponseDto)).toList(),
     }
