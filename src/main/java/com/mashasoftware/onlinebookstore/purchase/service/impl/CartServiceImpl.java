@@ -54,6 +54,11 @@ public class CartServiceImpl implements CartService {
         return createResponse(updatedCart);
     }
 
+    @Override
+    public void deleteCart(Integer userId) {
+        cartRepository.delete(getCurrentCart(userId));
+    }
+
     private CartResponseDto createResponse(Cart cart) {
         return new CartResponseDto(
                 cart.getId(),

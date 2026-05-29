@@ -22,4 +22,9 @@ public class CartController {
         return cartService.addToCart(userId, bookId);
     }
 
+    @DeleteMapping("/")
+    public void deleteCart(@RequestParam Integer userId) {
+        cartService.deleteCart(userId);
+    }
+
 }
